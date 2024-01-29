@@ -1,0 +1,200 @@
+body{
+    position: relative;
+    background-color: #beb3a8;
+    width: 100%;
+    height: 100vh;
+}
+
+img{
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 100%;
+    border-radius: 35px;
+    background-color: #beb3a8;
+}
+
+.container{
+    margin: 3em;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 5em 1fr 5em 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5em;
+}
+
+@media (max-width: 1200px) {
+    .container {
+      -ms-grid-columns: 1fr 5em 1fr;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 678px) {
+    .container {
+      -ms-grid-columns:  1fr;
+      grid-template-columns:  repeat(1, 1fr);
+    }
+  }
+
+.image-wrapper{
+    position: relative;
+    height: 200px;
+    background: center/cover;
+    border-radius: 50px;
+    -webkit-box-shadow: 5px 5px 5px 5px grey;
+            box-shadow: 5px 5px 5px 5px grey;
+    border: 15px solid #dfd8cf;
+    background-color: #e4c1a4;
+}
+
+.image{
+    background: transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    color: #fff;
+    opacity: 0;
+}
+
+.image-wrapper:hover .image{
+    cursor: pointer;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+}
+
+.show {
+    width:  80%;
+    height: 80%;
+    background: rgba(255, 249, 244, 0.3);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 25px;
+    -webkit-transition: -webkit-transform 0.2s linear;
+    transition: -webkit-transform 0.2s linear;
+    -o-transition: transform 0.2s linear;
+    transition: transform 0.2s linear;
+    transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+}
+
+.show:hover{
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+}
+
+.slider-wrapper{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    display: none;
+}
+
+.slider{
+    width: 51vw;
+    height: 72vh;
+    position: fixed;
+    top: 11%;
+    left: 24%;
+    display: none;
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+    border-radius: 30px;;
+}
+
+.fullsize {
+    width:70vw;
+    height: 80vh;
+    top: 0;
+    left: 14%;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.prev-btn, .next-btn{
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    color: #beb3a8;
+}
+
+.prev-btn{
+    border-right: 40px solid grey;
+    left: -93px;
+}
+
+.next-btn{
+    border-left: 40px solid grey;
+    right: -50px;
+}
+
+.next-btn:hover, .prev-btn:hover{
+    opacity: 0.5;
+}
+
+.reset-btn {
+    position: absolute;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    top: 50%;
+    left: 0%;
+    padding: 5px;
+    height: 50px;
+    color: rgb(59, 56, 52);
+    background-color: rgb(212, 202, 195, 0.5);
+    border: none;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.reset-btn:hover {
+    opacity: 0.5;
+}
