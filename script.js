@@ -1,34 +1,38 @@
-const showImg = document.querySelectorAll('.show');
-const allImages = document.querySelectorAll('.image-wrapper');
-const openSlide = document.querySelector('.slider-wrapper');
-const imageBox = document.querySelector('.slider');
+const sliderWrapper = document.querySelector('.slider-wrapper');
+let slider = document.querySelector('.slider');
+
+const openImgBtn = document.querySelectorAll('.show');
+const allImages = document.querySelectorAll('.image');
 
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
 
 let imgIndex = 0;
 
-//Открытие модального окна
-openSlide.addEventListener('click', function(){
-    this.style.display = "none";
-    imageBox.style.display = "none";
-})
 
-function currentImageDisplay(imageNum){
-    imageBox.style.background = `url(./img/img-${imageNum}.jpg) center/cover no-repeat`;
-}
-
-
-//Переключение слайда
-showImg.forEach(function(btn, index){
-    btn.addEventListener('click', function(){
-        openSlide.style.display = "block";
-        imageBox.style.display = "block";
+//Отображение основного слайдера по клику и получение порядкового номера картинки
+openImgBtn.forEach(function(openBtn, index){
+    openBtn.addEventListener('click', function(){
+        sliderWrapper.style.display = "block";
+        slider.style.display = "block";
         imgIndex = index + 1;
         currentImageDisplay(imgIndex);
     })
 })
 
+function currentImageDisplay(imageNum){
+    slider.style.background = `url(./img/img-${imageNum}.jpg) center/cover no-repeat`;
+}
+
+
+//Закрытие модального окна
+sliderWrapper.addEventListener('click', function(){
+    sliderWrapper.style.display = "none";
+    slider.style.display = "none";
+})
+
+
+//Перещелкивание слайда
 prevBtn.addEventListener('click', function(){
     imgIndex--;
     if(imgIndex < 1){
@@ -48,9 +52,8 @@ nextBtn.addEventListener('click', function(){
 
 //Увеличение изображения
 let currentScale = 1;
-let zoom = document.querySelectorAll('.slider');
 
-function change(element) {
+function changeScale(element) {
     currentScale += 0.1; 
     element.style.transform = `scale(${currentScale})`;
 }
@@ -60,16 +63,15 @@ function resetScale(element) {
     element.style.transform = `scale(${currentScale})`;
   }
   
-zoom.forEach(slide => slide.addEventListener('click', function(event) {
+slider.addEventListener('click', function(event) {
     const target = event.target;
-    imageBox.style.position = "fixed";
     if (target !== prevBtn && target !== nextBtn) {
-        change(this);
+        changeScale(slider);
     }
-}));
+});
 
 document.querySelector('.reset-btn').addEventListener('click', function() {
-    resetScale(imageBox);
+    resetScale(slider);
   });
 
 
